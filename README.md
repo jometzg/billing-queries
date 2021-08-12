@@ -39,6 +39,8 @@ In the code above, a POST is made to cost management API to get a resource group
 ## Getting the access token
 In order to get an access token, there must be an Azure AD app registration in the Azure AD tenant of the target subscription. This app registration must also have the role of "Billing Reader".
 
+![alt text](app-registration-billing-reader.png "Billing reader role for AD app registration")
+
 This access token, then will have a clientId and secret and these must be used in the request to get an access token. So the 4 parameters needed for this call are:
 1. ClientId
 2. Secret
