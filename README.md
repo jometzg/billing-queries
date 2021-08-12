@@ -68,3 +68,25 @@ It can often be useful to automate the process of doing cost management or billi
 
 ![alt text](http-action.png "Logic app HTTP Action")
 
+As can be seen from the above screenshot, this is exactly the same type of billing query from the REST requests, above.
+
+The next most important thing is how to get the access token. You could, of course, have another HTTP request to get the access token, but the HTTP Action provides some more automated approaches to getting the access token. 
+
+![alt text](authentication-methods.png "HTTP Action authentication methods")
+
+Two of the more interesting of these are:
+1. Managed identity
+2. Actice Directory OAuth
+
+The former is most useful and easiest if the HTTP needs to authenticate against the current AD tenant. For this to work, you need to:
+1. Enable managed identity for the logic app
+2. Find the app registration that is created as part of step one and add the "Billing Reader" role to it
+
+For *Active Directory OAuth*, there needs to be more configuration - but exactly the same set of values that the REST requests need.
+
+![alt text](active-directory-oauth.png "HTTP Action OAuth authentication")
+
+In the above, I have prefilled in the authority and audience with values that are correct for cost management and billing requests. All that is needed is the AD tenant ID, the clientId and secret.
+
+# Summary
+Cost management and billing queries can easily be done through REST requests. Logic apps using the HTTP action have a more streamlined way to authenticate these requests. You can choose to use either managed identities for queries under the same AD tenant or to use OAuth for remote AD tenants. For both of these an AD app registration is needed and this app registration needs to have the #billing reader# role for all of the subscriptions you want to query.
