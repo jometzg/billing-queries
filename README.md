@@ -54,3 +54,10 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id={{clientid}}&resource={{audience}}&client_secret={{secret}}
 
 ```
+
+## Trying out the REST requests
+The pair of REST queries may be executed in a REST client to firstly get the access token and then use this access token to call the cost management API.
+
+Visual Studio Code has a third-party extension called *REST Client* https://github.com/Huachao/vscode-restclient which is invaluable in debugging REST requests to services. It's really simple to use, but also powerful. You can paramaterise requests and then use the response from one request as part of the following one. In this case the call to get the access token provides this value for the second call to cost managment API.
+
+[REST requests for cost managment](billing-blank.http "Azure Cost management")
