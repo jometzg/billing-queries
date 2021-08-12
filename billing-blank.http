@@ -1,0 +1,42 @@
+# App registration in the target AD tenant that is a billing reader in the target subscription
+@clientid = 
+@secret = 
+@tentantid = 
+@audience = https://management.azure.com
+@targetSubscriptionId = 
+
+### Get an access token
+# @name login
+POST https://login.microsoftonline.com/{{tentantid}}/oauth2/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id={{clientid}}&resource={{audience}}&client_secret={{secret}}
+
+###
+@accessToken = {{login.response.body.access_token}}
+
+### billing query
+# @name billing
+POST  https://management.azure.com/subscriptions/{{targetSubscriptionId}}/providers/Microsoft.CostManagement/query?api-version=2019-11-01
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "dataset": {
+    "aggregation": {
+      "totalCost": {
+        "function": "Sum",
+        "name": "PreTaxCost"
+      }
+    },
+    "granularity": "None",
+    "grouping": [
+      {
+        "name": "ResourceGroup",
+        "type": "Dimension"
+      }
+    ]
+  },
+  "timeframe": "TheLastMonth",
+  "type": "Usage"
+}
