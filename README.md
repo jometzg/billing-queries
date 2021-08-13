@@ -99,7 +99,7 @@ You will need to update:
 1. tenantId
 2. ClientId
 3. Secret
-4. SubscriptionId (in the REST request path marked *<subscriptionid>*)
+4. SubscriptionId (in the REST request path marked *<<subscriptionid>>*)
 
 # Summary
 Cost management and billing queries can easily be done through REST requests. Logic apps using the HTTP action have a more streamlined way to authenticate these requests. You can choose to use either managed identities for queries under the same AD tenant or to use OAuth for remote AD tenants. For both of these an AD app registration is needed and this app registration needs to have the *billing reader* role for all of the subscriptions you want to query.
