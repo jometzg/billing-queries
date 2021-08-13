@@ -1,5 +1,5 @@
 # How to query billing/cost management
-This demonstrates how to use a logic app to query billing in both the current subscription and in another subscription in another Azure AD tenant. Much of this centres around how to do authentication of the REST requests to the Azure billing APIs.
+This demonstrates how to use a logic app to query billing in both the current subscription and in different subscription hosted in different Azure AD tenant. Much of this centres around how to do authentication of the REST requests to the Azure billing APIs.
 
 ## Microsoft documentation
 These query examples centre around the cost management part of the APIs, though the process is similar for the other billing-related APIs.
