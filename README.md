@@ -76,7 +76,7 @@ The next most important thing is how to get the access token. You could, of cour
 
 Two of the more interesting of these are:
 1. Managed identity
-2. Actice Directory OAuth
+2. Active Directory OAuth
 
 The former is most useful and easiest if the HTTP needs to authenticate against the current AD tenant. For this to work, you need to:
 1. Enable managed identity for the logic app
