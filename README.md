@@ -41,6 +41,8 @@ In order to get an access token, there must be an Azure AD app registration in t
 
 ![alt text](app-registration-billing-reader.png "Billing reader role for AD app registration")
 
+In the above diagram, the subscription has been selected in the portal and via the IAM menu, the role for the AD application is added to that subscription.
+
 This access token, then will have a clientId and secret and these must be used in the request to get an access token. So the 4 parameters needed for this call are:
 1. ClientId
 2. Secret
