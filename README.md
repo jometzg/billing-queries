@@ -62,7 +62,7 @@ The pair of REST queries may be executed in a REST client to firstly get the acc
 
 Visual Studio Code has a third-party extension called *REST Client* https://github.com/Huachao/vscode-restclient which is invaluable in debugging REST requests to services. It's really simple to use, but also powerful. You can paramaterise requests and then use the response from one request as part of the following one. In this case the call to get the access token provides this value for the second call to cost managment API.
 
-[REST requests for cost managment](billing-blank.http "Azure Cost management")
+[REST requests for cost management](billing-blank.http "Azure Cost management")
 
 
 ## Logic Apps
@@ -90,8 +90,8 @@ For *Active Directory OAuth*, there needs to be more configuration - but exactly
 
 In the above, I have prefilled in the authority and audience with values that are correct for cost management and billing requests. All that is needed is the AD tenant ID, the clientId and secret.
 
-A logic app that peforms both a managed identity call and an OAuth one is 
-[logic app code]("logic-app-redacted.json" "logic App code"). 
+An example logic app that peforms both a managed identity call and an OAuth one is 
+[logic app code](logic-app-redacted.json "logic App code") here. 
 
 You will need to update:
 1. tenantId
