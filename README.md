@@ -37,7 +37,7 @@ Authorization: Bearer {{accessToken}}
 In the code above, a POST is made to cost management API to get a resource group by resource group summary of costs (this is defined in the body of the POST request). The target subscription ID forms part of the URL path. But in order to do this we need an access token.
 
 ## Getting the access token
-In order to get an access token, there must be an Azure AD app registration in the Azure AD tenant of the target subscription. This app registration must also have the role of "Billing Reader".
+In order to get an access token, there must be an Azure AD app registration in the Azure AD tenant of the target subscription. This app registration must also have the role of "Billing Reader". If you want to query multiple subscriptions under the same Azure AD tenant, then you need to make sure that the billing reader role is set for each of these subscriptions for that app registration.
 
 ![alt text](app-registration-billing-reader.png "Billing reader role for AD app registration")
 
