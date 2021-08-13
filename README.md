@@ -90,7 +90,7 @@ For *Active Directory OAuth*, there needs to be more configuration - but exactly
 
 In the above, I have prefilled in the authority and audience with values that are correct for cost management and billing requests. All that is needed is the AD tenant ID, the clientId and secret.
 
-A logic app that peforms both a managed identity call and an OAuth one is [here](logic-app - redacted.json "logic App code"). You will need to update:
+A logic app that peforms both a managed identity call and an OAuth one is [here]("logic-app - redacted.json" "logic App code"). You will need to update:
 1. tenantId
 2. ClientId
 3. Secret
