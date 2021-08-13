@@ -1,0 +1,96 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Cost_Query_OAuth": {
+                "inputs": {
+                    "authentication": {
+                        "audience": "https://management.azure.com",
+                        "authority": "https://login.microsoftonline.com",
+                        "clientId": "",
+                        "secret": "",
+                        "tenant": "",
+                        "type": "ActiveDirectoryOAuth"
+                    },
+                    "body": {
+                        "dataset": {
+                            "aggregation": {
+                                "totalCost": {
+                                    "function": "Sum",
+                                    "name": "PreTaxCost"
+                                }
+                            },
+                            "granularity": "None",
+                            "grouping": [
+                                {
+                                    "name": "ResourceGroup",
+                                    "type": "Dimension"
+                                }
+                            ]
+                        },
+                        "timeframe": "TheLastMonth",
+                        "type": "Usage"
+                    },
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "method": "POST",
+                    "uri": "https://management.azure.com/subscriptions/<subscriptionid>/providers/Microsoft.CostManagement/query?api-version=2019-11-01"
+                },
+                "runAfter": {
+                    "Cost_Query_managed_instance": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Http"
+            },
+            "Cost_Query_managed_instance": {
+                "inputs": {
+                    "authentication": {
+                        "audience": "https://management.azure.com",
+                        "type": "ManagedServiceIdentity"
+                    },
+                    "body": {
+                        "dataset": {
+                            "aggregation": {
+                                "totalCost": {
+                                    "function": "Sum",
+                                    "name": "PreTaxCost"
+                                }
+                            },
+                            "granularity": "None",
+                            "grouping": [
+                                {
+                                    "name": "ResourceGroup",
+                                    "type": "Dimension"
+                                }
+                            ]
+                        },
+                        "timeframe": "TheLastMonth",
+                        "type": "Usage"
+                    },
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "method": "POST",
+                    "uri": "https://management.azure.com/subscriptions/<subscriptionid>/providers/Microsoft.CostManagement/query?api-version=2019-11-01"
+                },
+                "runAfter": {},
+                "type": "Http"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {},
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "schema": {}
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {}
+}
