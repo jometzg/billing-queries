@@ -138,6 +138,10 @@ The underlying code for the logic app will then no longer have the clientId and 
 
 ![alt text](logic-app-with-kv-code.png "logic app code view").
 
+The values can still be seen on the logic app runs, however. To make sure that the secrets are not shown in the logic app history, there is a property that can be set on the *Settings" for the key vault steps. This is "Secure Outputs" and needs to be enabled. This is illustrated below:
+
+![alt text](logic-app-kv-action-settings.png "key vault step settings").
+
 Once complete, retesting should show the logic app works as normal.
 
 # Summary
