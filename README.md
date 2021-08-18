@@ -126,7 +126,7 @@ Once the logic app is authenticated against the key vault, a step to get a secre
 
 In order to use these secrets in the HTTP step, these can be chosen from the *Dynamic Content* dialog:
 
-![alt text](logic-app-http-dyanmic.png "use a secret in logic app").
+![alt text](logic-app-http-dynamic.png "use a secret in logic app").
 
 Note that the secret value is the property *value* in a section with the name of the step - in the above, the section is "Get secret" - which is what the step was renamed to earlier.
 
