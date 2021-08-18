@@ -114,8 +114,23 @@ The names of the key vault secrets should be chosen to make their later identifi
 
 Next, the key vault reference needs to be added to the logic app itself. This also creates a logic app "API Connection" - which is used to manage the authentication of the logic app to the key vault instance created for this purpose.
 
+![alt text](logic-app-kv-action.png "Add key vault to logic app").
+
+The API Connection used:
+
+![alt text](logic-app-with-kv-connections.png "logic app API connections").
+
+Once the logic app is authenticated against the key vault, a step to get a secret can be added. If you have chosen to also store the clientId, then there will need to be on step for the clientId and one for the secret. In order to make this clearer for later, a step can be renamed (by choosing the "..." and "Rename". See below:
 
 ![alt text](logic-app-with-kv.png "key vault secrets in logic app").
+
+In order to use these secrets in the HTTP step, these can be chosen from the *Dynamic Content* dialog:
+
+![alt text](logic-app-http-dyanmic.png "use a secret in logic app").
+
+Note that the secret value is the property *value* in a section with the name of the step - in the above, the section is "Get secret" - which is what the step was renamed to earlier.
+
+This need to be done for each clientId and secret needed for any steps that need these.
 
 # Summary
 Cost management and billing queries can easily be done through REST requests. Logic apps using the HTTP action have a more streamlined way to authenticate these requests. You can choose to use either managed identities for queries under the same AD tenant or to use OAuth for remote AD tenants. For both of these an AD app registration is needed and this app registration needs to have the *billing reader* role for all of the subscriptions you want to query.
