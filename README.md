@@ -101,5 +101,21 @@ You will need to update:
 3. Secret
 4. SubscriptionId (in the REST request path marked *subscriptionid*)
 
+## Securing secrets in logic apps
+Logic apps can make use of key vault for keys and secrets. Storing these in key vault will mean that the logic app underlying code will not contain the Azure AD app registration secret - which is good practice.
+
+To do this, you first need to create a key vault. This can be any name, but it should be in the subscription and region of the logic app itself.
+![alt text](logic-app-resources.png "Resource group with logic app and key vault")
+
+In this key vault, you then need to create a secret for the app registration secret. In the example, I have chosen to also create the clientId as a secret. This is not necessary, but may also help keep the logic app code clean. Other values could also be added to the key vault, such as the subscription and tenent IDs.
+![alt text](key-vault-secrets.png "key vault secrets created").
+
+The names of the key vault secrets should be chosen to make their later identification easier. 
+
+Next, the key vault reference needs to be added to the logic app itself. This also creates a logic app "API Connection" - which is used to manage the authentication of the logic app to the key vault instance created for this purpose.
+
+
+![alt text](logic-app-with-kv.png "key vault secrets in logic app").
+
 # Summary
 Cost management and billing queries can easily be done through REST requests. Logic apps using the HTTP action have a more streamlined way to authenticate these requests. You can choose to use either managed identities for queries under the same AD tenant or to use OAuth for remote AD tenants. For both of these an AD app registration is needed and this app registration needs to have the *billing reader* role for all of the subscriptions you want to query.
