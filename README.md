@@ -132,5 +132,13 @@ Note that the secret value is the property *value* in a section with the name of
 
 This need to be done for each clientId and secret needed for any steps that need these.
 
+![alt text](logic-app-http-secrets.png "clientId and secret in logic app").
+
+The underlying code for the logic app will then no longer have the clientId and secret in the code view of the logic app:
+
+![alt text](logic-app-with-kv-code.png "logic app code view").
+
+Once complete, retesting should show the logic app works as normal.
+
 # Summary
 Cost management and billing queries can easily be done through REST requests. Logic apps using the HTTP action have a more streamlined way to authenticate these requests. You can choose to use either managed identities for queries under the same AD tenant or to use OAuth for remote AD tenants. For both of these an AD app registration is needed and this app registration needs to have the *billing reader* role for all of the subscriptions you want to query.
